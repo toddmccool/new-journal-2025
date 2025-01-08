@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daily Growth Journal</title>
+    <title>Daily Flow & Growth Journal 2025</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -53,113 +53,72 @@
     </style>
   </head>
   <body>
-    <h1>Daily Growth Journal</h1>
+    <h1>Daily Flow & Growth Journal</h1>
 
     <div class="question">
-      <p>
-        <strong>Why:</strong> Break down your goals into small, achievable
-        steps, focusing on daily actions rather than the overwhelming end
-        result. Consistent, small steps build momentum and create lasting
-        change.
-      </p>
+      <h2>Body Check-In</h2>
+      <label>Where do you feel tension or fatigue?</label>
+      <textarea id="body-tension"></textarea>
+
+      <label>Activities that energized you:</label>
+      <textarea id="body-energy"></textarea>
+    </div>
+
+    <div class="question">
+      <h2>Emotions</h2>
+      <label>What emotions dominated your day?</label>
+      <textarea id="dominant-emotions"></textarea>
+
+      <label>Triggers for those emotions:</label>
+      <textarea id="emotion-triggers"></textarea>
+    </div>
+
+    <div class="question">
+      <h2>Mind & Thought Patterns</h2>
+      <label>Recurring thoughts or patterns:</label>
+      <textarea id="mind-patterns"></textarea>
+
+      <label>Negative self-talk (if any):</label>
+      <textarea id="self-talk"></textarea>
+    </div>
+
+    <div class="question">
+      <h2>Growth Actions</h2>
       <p class="quote">
         "The journey of a thousand miles begins with one step." – Lao Tzu
       </p>
-      <label for="action"
-        >What is one specific action I can take today to move closer to my
-        goal?</label
-      >
+      <label>One action I can take today to move closer to my goal:</label>
       <textarea id="action"></textarea>
-      <label for="timeAction">When or What time will I take that step?</label>
+
+      <label>When will I take this step?</label>
       <textarea id="timeAction"></textarea>
     </div>
 
     <div class="question">
-      <p>
-        <strong>Why:</strong> Limiting beliefs create negative emotions that
-        hinder progress. Actively question and challenge these beliefs by
-        finding evidence to the contrary, replacing them with empowering
-        narratives.
-      </p>
-      <p class="quote">
-        "Whether you think you can, or you think you can’t—you’re right." –
-        Henry Ford
-      </p>
-      <label for="limiting-belief">What belief is holding me back?</label>
+      <h2>Belief Reframing</h2>
+      <label>What belief is holding me back?</label>
       <textarea id="limiting-belief"></textarea>
-      <label for="positive-belief"
-        >What would be the opposite of that belief?</label
-      >
+
+      <label>What is the opposite empowering belief?</label>
       <textarea id="positive-belief"></textarea>
-      <label for="evidence"
-        >What evidence can I find to support this positive belief?</label
-      >
+
+      <label>Evidence supporting this belief:</label>
       <textarea id="evidence"></textarea>
     </div>
 
     <div class="question">
-      <p>
-        <strong>Why:</strong> Gratitude shifts focus from lack to abundance,
-        aligning your subconscious mind with your goals. Recognize the resources
-        and opportunities already present, fueling motivation and positivity.
-      </p>
-      <p class="quote">
-        "Gratitude turns what we have into enough." – Melody Beattie
-      </p>
-      <label for="gratitude"
-        >What am I grateful for today, and how does this abundance support my
-        goals?</label
-      >
+      <h2>Gratitude</h2>
+      <label>What am I grateful for today?</label>
       <textarea id="gratitude"></textarea>
     </div>
 
     <div class="question">
-      <p>
-        <strong>Why:</strong> Visualization brings the desired future into the
-        present moment, generating positive emotions and reinforcing the belief
-        in its attainability. Focus on the feelings associated with success,
-        making them tangible and motivating.
-      </p>
-      <p class="quote">
-        "Imagination is everything. It is the preview of life’s coming
-        attractions." – Albert Einstein
-      </p>
-      <label for="vision"
+      <h2>Visualization</h2>
+      <label
         >Describe your vision and how you can bring that feeling into the
         present moment:</label
       >
       <textarea id="vision"></textarea>
-    </div>
-
-    <div class="question">
-      <p>
-        <strong>Why:</strong> Recognizing potential obstacles and planning to
-        overcome them conserves willpower and avoids reactive responses.
-        Structure your environment and routines to minimize distractions and
-        make positive choices easier.
-      </p>
-      <p class="quote">
-        "In the middle of every difficulty lies opportunity." – Albert Einstein
-      </p>
-      <label for="obstacles">What will stand in my way today?</label>
-      <textarea id="obstacles"></textarea>
-    </div>
-
-    <div class="question">
-      <p>
-        <strong>Why:</strong> Consciously focus on building positive habits and
-        eliminating negative ones, using small, consistent actions to rewire
-        your brain's default mode.
-      </p>
-      <p class="quote">
-        "We are what we repeatedly do. Excellence, then, is not an act, but a
-        habit." – Aristotle
-      </p>
-      <label for="positive-habit"
-        >What is one thing I can do today to cultivate or strengthen a positive
-        habit?</label
-      >
-      <textarea id="positive-habit"></textarea>
     </div>
 
     <button onclick="generateSummary()">Generate Daily Action Plan</button>
@@ -175,7 +134,6 @@
 
     <script>
       function generateSummary() {
-        // Generate current date and time
         const now = new Date();
         const date = now.toLocaleDateString();
         const time = now.toLocaleTimeString();
@@ -183,50 +141,35 @@
           "date-time"
         ).innerText = `Date: ${date} | Time: ${time}`;
 
-        // Get user inputs
-        const timeAction = document.getElementById("timeAction").value;
         const action = document.getElementById("action").value;
+        const timeAction = document.getElementById("timeAction").value;
         const positiveBelief = document.getElementById("positive-belief").value;
         const evidence = document.getElementById("evidence").value;
         const gratitude = document.getElementById("gratitude").value;
         const vision = document.getElementById("vision").value;
-        const obstacles = document.getElementById("obstacles").value;
-        const positiveHabit = document.getElementById("positive-habit").value;
 
-        // Create summary
         const summaryContent = `
-        <p><strong>Action Step:</strong> ${timeAction} I will ${action}</p>
-        <p><strong>Positive Belief:</strong> ${positiveBelief}</p>
-        <p><strong>Evidence:</strong> ${evidence}</p>
-        <p><strong>Gratitude:</strong> ${gratitude}</p>
-        <p><strong>Vision:</strong> ${vision}</p>
-        <p><strong>Plan:</strong> When I encounter <em>${obstacles}</em>, I will <em>${positiveHabit}</em>.</p>
-      `;
+          <p><strong>Action Step:</strong> ${timeAction} - ${action}</p>
+          <p><strong>Positive Belief:</strong> ${positiveBelief}</p>
+          <p><strong>Evidence:</strong> ${evidence}</p>
+          <p><strong>Gratitude:</strong> ${gratitude}</p>
+          <p><strong>Vision:</strong> ${vision}</p>
+        `;
         document.getElementById("summary-content").innerHTML = summaryContent;
-
-        // Show the summary
         document.getElementById("summary").style.display = "block";
-
-        // Hide all question sections
-        const questions = document.querySelectorAll(".question");
-        questions.forEach((question) => {
-          question.style.display = "none";
-        });
       }
 
       function copyAndOpenDoc() {
-        const dateTime = document.getElementById("date-time").innerText; // Get date and time
+        const dateTime = document.getElementById("date-time").innerText;
         const summaryContent =
-          document.getElementById("summary-content").innerText; // Get summary content
-        const fullContent = `${dateTime}\n\n${summaryContent}`; // Combine date/time and summary
+          document.getElementById("summary-content").innerText;
+        const fullContent = `${dateTime}\n\n${summaryContent}`;
 
-        // Copy to clipboard
         navigator.clipboard
           .writeText(fullContent)
           .then(() => {
-            // Open the Google Document in a new tab
             window.open(
-              "https://docs.google.com/document/d/1t3scUaamoUVePAFUhf-3TcneOlUXA3TKnnofHjS394c/edit?usp=sharing",
+              "https://docs.google.com/document/d/12QJBg6OZqPYxla_E-x7owSOhOo36kOATPmaBDJZzaOs/edit?usp=sharing",
               "_blank"
             );
           })
